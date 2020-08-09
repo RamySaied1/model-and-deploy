@@ -33,13 +33,17 @@ def imputeWithMean(columns,df):
         df[col].fillna(df[col].mean(),inplace=True)
         
     
-def labelEncoding(train,test):
+def labelEncoding(train,test,prediction=False):
     categorical_feature_mask = train.dtypes==object
     categorical_cols = train.columns[categorical_feature_mask].tolist()    
     le=None
+    print(categorical_cols)
     for col in categorical_cols:
         le = LabelEncoder()
         train[col] = le.fit_transform(train[col])
+        print(col)
+        if (prediction and col=="classLabel"):
+            continue
         test[col] = le.transform(test[col])
     
     return categorical_cols 
@@ -93,55 +97,55 @@ def overSampling(train,classLabel):
 # - because the data have many categorial features and we must encode them to number so i will encode them using oneHotencoding technique (better than label encoding because the categorial data we have don't have order relationship)
 # 
 
+def main():
+    train = pd.read_csv("training.csv",sep=';')
+    test = pd.read_csv("validation.csv",sep=';')
 
-train = pd.read_csv("training.csv",sep=';')
-test = pd.read_csv("validation.csv",sep=';')
-   
-## read numerical data correctly
-columns=["variable2" ,"variable3","variable8"]
-objectsToNumbers(columns,train)
-objectsToNumbers(columns,test)
+    ## read numerical data correctly
+    columns=["variable2" ,"variable3","variable8"]
+    objectsToNumbers(columns,train)
+    objectsToNumbers(columns,test)
 
-## missing value imputation
-columns=["variable1","variable4","variable5","variable6","variable7"]
-imputeWithMode(columns,train)
-imputeWithMode(columns,test)
-    
-columns=["variable14","variable17","variable2"]
-imputeWithMean(columns,train)
-imputeWithMean(columns,test)    
+    ## missing value imputation
+    columns=["variable1","variable4","variable5","variable6","variable7"]
+    imputeWithMode(columns,train)
+    imputeWithMode(columns,test)
 
-## remove unwanted columns
-columns = ["variable5","variable17","variable18","variable19"]
-train.drop(columns, axis=1, inplace=True)
-test.drop(columns, axis=1, inplace=True)
+    columns=["variable14","variable17","variable2"]
+    imputeWithMean(columns,train)
+    imputeWithMean(columns,test)    
 
-print ("Dealing with missing values and unwanted columns finished")
+    ## remove unwanted columns
+    columns = ["variable5","variable17","variable18","variable19"]
+    train.drop(columns, axis=1, inplace=True)
+    test.drop(columns, axis=1, inplace=True)
 
-
-## label encoding
-categoryColumns=labelEncoding(train,test)
+    print ("Dealing with missing values and unwanted columns finished")
 
 
-## one Hot Encodinf
-train,test,categoryColumns= oneHotEncoding(train,test,categoryColumns,"classLabel")
-
-## remove original columns
-train.drop(categoryColumns, axis=1, inplace=True)
-test.drop(categoryColumns, axis=1, inplace=True)
-
-print("Encoding finished")
+    ## label encoding
+    categoryColumns=labelEncoding(train,test)
 
 
-# oversampling the training data
-train=overSampling(train,"classLabel")
+    ## one Hot Encodinf
+    train,test,categoryColumns= oneHotEncoding(train,test,categoryColumns,"classLabel")
 
-print("OverSampling (SMOTE) finished")
+    ## remove original columns
+    train.drop(categoryColumns, axis=1, inplace=True)
+    test.drop(categoryColumns, axis=1, inplace=True)
+
+    print("Encoding finished")
 
 
-# save the output
-train.to_csv("training_processed.csv",sep=';')
-test.to_csv("validation_processed.csv",sep=';')
+    # oversampling the training data
+    train=overSampling(train,"classLabel")
 
-print ("\nPreprocessing finished \n")
+    print("OverSampling (SMOTE) finished")
+
+
+    # save the output
+    train.to_csv("training_processed.csv",sep=';')
+    test.to_csv("validation_processed.csv",sep=';')
+
+    print ("\nPreprocessing finished \n")
 
