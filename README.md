@@ -9,6 +9,33 @@ pip install -r requirment.txt
  - or use python 3 and install this requirment.txt using the above command also 
 - jupyter notebook (for better understanding of the steps and how i made these decisions).
 
+# File Structure
+
+ * [model_code (code of developing  and testing the model)](./dir2) 
+   * [preprocessing.py](./dir2/file21.ext)
+   * [preprocessing.ipynp](./dir2/file22.ext)
+   * [Training.ipynp](./dir2/file23.ext)
+   * [Training.py](./dir2/file23.ext)
+   * [training_processed.csv](./dir2/file23.ext)
+   * [training.csv](./dir2/file23.ext)
+   * [validation_processed.csv](./dir2/file23.ext)
+   * [validation.csv](./dir2/file23.ext)
+
+   
+ * [README.md](./README.md)
+ * [run.py (main code for run the micro service)](./README.md)
+ * [prediction.py (prediction code)](./README.md)
+ * [label_encoder.pckl (label encoder model)](./README.md)
+ * [one_hot.pckl (one hot encoder model)](./README.md)
+ * [pca.pckl(pca model)](./README.md)
+ * [scaler.pckl (scaling model)](./README.md)
+ * [model.pckl (support vector machine model (SVC))](./README.md)
+
+
+
+
+
+
 # Overview 
 
 - ## Preprocessing Notebook Or preprocessing.py 
