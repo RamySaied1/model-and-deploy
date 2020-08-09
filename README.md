@@ -98,7 +98,7 @@ F1 Negative : 0.8962264150943396
 ************ Avg F1 score 0.8896025692492975    ***************
 ```
 ## Micro service 
-### request.py have the test cases to test micro services
+### request.py have the test cases to test the micro service
 To use the micro service you have two options 
 1.  * python run.py  (this to run server locally)
     * Python request.py local 
