@@ -25,6 +25,7 @@ pip install -r requirment.txt
  * [README.md](./README.md)
  * [run.py (main code for run the micro service)](./README.md)
  * [prediction.py (prediction code)](./README.md)
+ * [request.py (test cases to test microservice)](./README.md)
  * [label_encoder.pckl (label encoder model)](./README.md)
  * [one_hot.pckl (one hot encoder model)](./README.md)
  * [pca.pckl(pca model)](./README.md)
