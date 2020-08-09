@@ -72,9 +72,9 @@ pip install -r requirment.txt
     - ### Performance Criteria
          - To judge the classifier i will not take intp account accuracy because it can be misleading because the data is unbalanced i will compute f1 scores (because f1 score take into account recall and precision for specific class ) for both classes and take the average and this is my performance criteria 
 
-- # Results  
+- # Results  (on validation test)
 ```
-Model Scores  
+Model Scores  (on validation test)
 TotalNumber of tests 200  
 TP 83  
 TN 95  
