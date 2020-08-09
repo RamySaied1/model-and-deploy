@@ -18,8 +18,6 @@ def return_class():
         else:
             prediction={'output':'yes'}
 
-
-
         return jsonify(prediction),200
     except Exception as e:
         return jsonify({"error ":e}),404
@@ -27,7 +25,7 @@ def return_class():
 
 @app.route("/",methods=['GET'])
 def default():
-    return "<p> microservice for wide pot model!</p>"
+    return "<p> microservice for wide pot task !</p>"
 
 if __name__ == "__main__":
     app.run() 

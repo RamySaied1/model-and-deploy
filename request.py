@@ -56,10 +56,12 @@ features_yes={
 "variable18" : "f",
 "variable19" : "1",
 } ## expected class yes
+
+print("**** for the first test case *****")
 r = requests.post(url,json=features_no)
 print(r)
 print(r.json())
-
+print("**** for the second  test case *****")
 r = requests.post(url,json=features_yes)
 print(r)
 print(r.json())

@@ -37,14 +37,15 @@ def labelEncoding(train,test,prediction=False):
     categorical_feature_mask = train.dtypes==object
     categorical_cols = train.columns[categorical_feature_mask].tolist()    
     le=None
-    print(categorical_cols)
+    models={}
     for col in categorical_cols:
         le = LabelEncoder()
         train[col] = le.fit_transform(train[col])
-        print(col)
         if (prediction and col=="classLabel"):
             continue
         test[col] = le.transform(test[col])
+        models[col]=le
+    
     
     return categorical_cols 
     
