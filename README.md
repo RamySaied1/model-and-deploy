@@ -69,6 +69,20 @@ F1 Negative : 0.8962264150943396
 
 ************ Avg F1 score 0.8896025692492975    ***************
 ```
+## Micro service 
+To use the micro service you have two options 
+1.  * python run.py  (this to run server locally)
+    * Python request.py local 
+1.  * Python request.py global  (to use the global server deployed on pythonanywhere host)
+### Output 
+```
+**** for the first test case *****
+<Response [200]>
+{'output': 'no'}
+**** for the second  test case *****
+<Response [200]>
+{'output': 'yes'}
+```
 
 ## Notes 
 ### please ignore the warning   
